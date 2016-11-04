@@ -83,7 +83,7 @@ if __name__ == "__main__":
     parser.add_argument('--bootstrap-server', help='Which kafka to query. Used for new consumer')
     parser.add_argument('--zookeeper', help='Which zookeeper to query. Used for old consumer')
     parser.add_argument('--idb_host', help='Influxdb host')
-    parser.add_argument('--idb_port', help='Influxdb port')
+    parser.add_argument('--idb_port', type=int, help='Influxdb port')
     parser.add_argument('--idb_user', help='Influxdb user')
     parser.add_argument('--idb_pass', help='Influxdb password')
     parser.add_argument('--idb_db', help='Influxdb database')
