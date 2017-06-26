@@ -24,12 +24,19 @@ def parse_output(input_from_checker):
             # Only pick the columns we are interested in
             group = columns[0]
             topic = columns[1]
-            metric_columns = [int(c) for c in columns[2:6]]
+            metric_columns = [get_metric_value(c) for c in columns[2:6]]
 
             key_and_value_pairs = zip(OUTPUT_KEYS, [group, topic] + metric_columns)
             output.append(dict(key_and_value_pairs))
 
     return output
+
+
+def get_metric_value(col_value):
+    if not col_value or col_value == 'unknown':
+        return None
+    else:
+        return int(col_value)
 
 
 def to_influxdb_json(parsed_output):
